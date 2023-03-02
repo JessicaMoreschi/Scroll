@@ -4,7 +4,7 @@ var service = 'Cardiological examination';
 let regioneWait, serviceWait, lineHeight
 let runDays=false
 
-let dayElapsed = 1
+let dayElapsed = 0
 let dday = 02
 let mmonthN = 2
 let mmonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -110,7 +110,7 @@ function changePage() {
         .attr('class', 'flex-column daysCentraleContainer')
         .append('h1')
         .style('font-size', '64px')
-        .style('width', '250px')
+        .style('width', '300px')
         .style('color', 'var(--primary-color)')
         .style('padding-top', '30px')
         .text(function () {
@@ -150,7 +150,14 @@ function changePage() {
     alertBox.select('div')
         .attr('class', 'flex-row footerAlert')
         .append('button')
-        .on('click', function () { d3.select('.overlay').style('display', 'none'); })
+        .on('click', function () { 
+            d3.select('.overlay').style('display', 'none'); 
+            document.getElementsByClassName('scrollContainer')[0].scrollTo({
+                top: lineHeight,
+                left: 0,
+                behavior: 'smooth'
+            });
+        })
         .attr('class', 'roundButton')
         .text('Accept')
 
@@ -161,9 +168,8 @@ function changePage() {
 
 
 function scrollFunction() {
-    dayElapsed += 0.01
-
-    d3.select('.daysCentraleContainer').select('h1').text(Math.floor(dayElapsed) + ' Days')
+    dayElapsed = Math.floor((document.getElementsByClassName('scrollContainer')[0].scrollTop)/(lineHeight/1000)/14)
+    d3.select('.daysCentraleContainer').select('h1').text(dayElapsed + ' Days')
 }
 
 function getH() {
