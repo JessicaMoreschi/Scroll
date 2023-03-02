@@ -154,6 +154,21 @@ function changePage() {
         .attr('class', 'roundButton')
         .text('Accept')
 
+        //access stat
+        d3.select('.mainContent').append('div').append('button')
+        .on('click', function () { 
+            d3.select('.overlay').style('display', 'none'); 
+            document.getElementsByClassName('scrollContainer')[0].scrollTo({
+                top: lineHeight,
+                left: 0,
+                behavior: 'smooth'
+            });
+            getPrivate=true
+        })
+        .attr('class', 'btnFixed roundButton')
+        .attr('id', 'accessStatBtn')
+        .style('display', 'none')
+        .text('Discover')
     getH()
 }
 
@@ -166,7 +181,13 @@ function scrollFunction() {
         d3.select('.overlay').style('display', 'block');
        }
     d3.select('.daysCentraleContainer').select('h1').text(dayElapsed + ' Days')
-}
+    console.log(lineHeight, document.getElementsByClassName('scrollContainer')[0].scrollTop)
+
+if((lineHeight - document.getElementsByClassName('scrollContainer')[0].scrollTop)<1600)
+  {     console.log('ghjk')
+  d3.select('#accessStatBtn').style('display', 'flex')
+   
+}}
 
 function getH() {
     let dataRegion = document.querySelector("#squareTag0 > h5").innerHTML
