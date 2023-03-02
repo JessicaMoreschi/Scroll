@@ -230,7 +230,7 @@ body {
     top: 0;
     left: 50%;
     transform: translate(-50%);
-    gap: 1000px;
+    justify-content: space-between;
 }
 
 .days * {

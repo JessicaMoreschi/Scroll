@@ -2,6 +2,7 @@
 var regione = 'Abruzzo';
 var service = 'Cardiological examination';
 let regioneWait, serviceWait, lineHeight
+let runDays=false
 
 let dayElapsed = 1
 let dday = 02
@@ -89,20 +90,20 @@ function changePage() {
         d3.select('.scrollContainer')
         .append('div')
         .attr('class', 'flex-column days')
-    for (let day = 0; day < 40; day++) {
-        d3.select('.days')
-            .append('h5')
-            .style('color', 'var(--main-color)')
-            .text(
-                function () {
-                    if (dday < 31) {
-                        dday++
-                    } else { dday = 01; mmonthN++ }
+    // for (let day = 0; day < 40; day++) {
+    //     d3.select('.days')
+    //         .append('h5')
+    //         .style('color', 'var(--main-color)')
+    //         .text(
+    //             function () {
+    //                 if (dday < 31) {
+    //                     dday++
+    //                 } else { dday = 01; mmonthN++ }
 
-                    return (dday + ' ' + mmonth[mmonthN])
-                }
-            )
-    }
+    //                 return (dday + ' ' + mmonth[mmonthN])
+    //             }
+    //         )
+    // }
 
     //days centrale
     d3.select('.mainContent').append('div')
@@ -173,11 +174,34 @@ function getH() {
 
         lineHeight = (regioneWait * serviceWait) * 1000
         if (lineHeight > 0 && lineHeight != undefined && lineHeight != NaN) {
-            console.log(lineHeight)
+            d3.select('#line').style('height', function(){
+                console.log(lineHeight+'px')
+                return lineHeight + 'px'})
+                if (runDays==false)
+                {setDays()
+                runDays=true}
         }
     })
 
-    d3.select('#line').style('height', function(){
-        console.log(lineHeight+'px')
-        return lineHeight + 'px'})
+   
 }
+
+function setDays(){
+    console.log(lineHeight/1000)
+    for (let day = 0; day < lineHeight/1000; day++) {
+        d3.select('.days')
+            .append('h5')
+            .style('color', 'var(--main-color)')
+            .text(
+                function () {
+                    if (dday < 31) {
+                        dday++
+                    } else { dday = 01; mmonthN++ }
+
+                    return (dday + ' ' + mmonth[mmonthN])
+                }
+            )
+    }
+d3.select('.days').style('gap', function(){return (lineHeight-((lineHeight/1000)*36))/(lineHeight/100)})
+}
+
