@@ -3,6 +3,7 @@ var regione = 'Abruzzo';
 var service = 'Cardiological examination';
 let regioneWait, serviceWait, lineHeight
 let runDays=false
+let getPrivate=false
 
 let dayElapsed = 0
 let dday = 02
@@ -90,21 +91,7 @@ function changePage() {
         d3.select('.scrollContainer')
         .append('div')
         .attr('class', 'flex-column days')
-    // for (let day = 0; day < 40; day++) {
-    //     d3.select('.days')
-    //         .append('h5')
-    //         .style('color', 'var(--main-color)')
-    //         .text(
-    //             function () {
-    //                 if (dday < 31) {
-    //                     dday++
-    //                 } else { dday = 01; mmonthN++ }
-
-    //                 return (dday + ' ' + mmonth[mmonthN])
-    //             }
-    //         )
-    // }
-
+   
     //days centrale
     d3.select('.mainContent').append('div')
         .attr('class', 'flex-column daysCentraleContainer')
@@ -146,7 +133,12 @@ function changePage() {
     alertBox.append('div')
         .append('h5')
         .text('Reject')
-        .on('click', function () { d3.select('.overlay').style('display', 'none') })
+        .on('click', function () { d3.select('.overlay').style('display', 'none');
+        document.getElementsByClassName('scrollContainer')[0].scrollBy({
+            top: 500,
+            left: 0,
+            behavior: 'smooth'
+        });})
     alertBox.select('div')
         .attr('class', 'flex-row footerAlert')
         .append('button')
@@ -157,6 +149,7 @@ function changePage() {
                 left: 0,
                 behavior: 'smooth'
             });
+            getPrivate=true
         })
         .attr('class', 'roundButton')
         .text('Accept')
@@ -169,6 +162,9 @@ function changePage() {
 
 function scrollFunction() {
     dayElapsed = Math.floor((document.getElementsByClassName('scrollContainer')[0].scrollTop)/(lineHeight/1000)/14)
+    if(dayElapsed%9==0 && dayElapsed>4 && getPrivate==false ) { 
+        d3.select('.overlay').style('display', 'block');
+       }
     d3.select('.daysCentraleContainer').select('h1').text(dayElapsed + ' Days')
 }
 
