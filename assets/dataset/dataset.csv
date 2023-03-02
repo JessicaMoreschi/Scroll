@@ -1,0 +1,21 @@
+id,regione,regioneWait,service,serviceWait
+1,Abruzzo,69,Cardiological examination,1
+2,Basilicata,67,Cardiological surgery,3.5
+3,Calabria,71,Colonoscopy,1.1
+4,Campania,79,CT scan,3.8
+5,Emilia-Romagna,41,Dermatological exahmination,3
+6,Friuli-Venezia Giulia,40,Diabetes examination ,3.5
+7,Lazio,90,Endocrinological visit,3
+8,Liguria,41,Esophagus examination ,1
+9,Lombardia,50,Gynecological examination ,1.1
+10,Marche,57,Hernia surgery,2.7
+11,Molise,60,Mammography  ,4
+12,Piemonte,50,MRI scan,1.8
+13,Puglia,73,Oncological examination,1
+14,Sardegna,68,Oncological surgery,1.8
+15,Sicilia,79,Ophthalmology visit,2.7
+16,Toscana,75,Orthopedic surgery,3
+17,Trentino-Alto Adige,50,Rheumatological examination ,3
+18,Umbria,66,Ultrasound,3.5
+19,Valle d'Aosta,30,Urological examination,1
+20,Veneto,40,,

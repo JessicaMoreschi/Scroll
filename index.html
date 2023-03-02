@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- Fullpage.js CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./node_modules/fullpage.js/dist/fullpage.css"
+    />
+    <!-- My CSS -->
+    <link rel="stylesheet" href="./index.css" />
+
+    <title>Scroll</title>
+    <!-- <link rel="icon" type="image/x-icon" href="./assets/imgs/Favicon.png" /> -->
+  </head>
+
+  <body>
+    <div class="flex-row header">
+      <img src="assets/icons/menu.svg" />
+      <h2>User Profilation</h2>
+    </div>
+
+    <div class="flex-column mainContent">
+      <div class="flex-column">
+        <h3 style="padding-left: 16px">Geolocation</h3>
+
+        <div class="dropdown">
+          <button class="btn input-visible dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" display: flex; align-items: center; justify-content: space-between;" onclick="openDropMenu(0)">
+            <div class="flex-row" style="gap: 8px; align-items: center">
+              <img src="assets/icons/user.svg" />
+              <h3 style="height: 14px" id="labelName0">Select</h3>
+            </div>
+            <h5 class="input-label">Region</h5>
+          </button>
+          <div class="dropdown-menu" id="dropdown-menu0" aria-labelledby="dropdownMenuButton" onclick="closeDropMenu(0)">
+          </div>
+        </div>
+      </div>
+
+
+        <div class="flex-column">
+          <h3 style="padding-left: 16px">Category</h3>
+  
+          <div class="dropdown">
+            <button class="btn input-visible dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" display: flex; align-items: center; justify-content: space-between;" onclick="openDropMenu(1)">
+              <div class="flex-row" style="gap: 8px; align-items: center">
+                <img src="assets/icons/user.svg" />
+                <h3 style="height: 14px" id="labelName1">Select</h3>
+              </div>
+              <h5 class="input-label">Healthcare service</h5>
+            </button>
+            <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="dropdownMenuButton"  onclick="closeDropMenu(1)">
+            </div>
+          </div>
+        </div>
+
+      <button class="flex-column roundButton btnFixed" onclick="changePage()">Access</button>
+
+      <button class="flex-column" id="private">
+        <img src="assets/icons/building.svg" >
+      </button>
+
+    </div>
+      
+
+    
+
+    <!-- ******************* Utilities ******************* -->
+    <!-- Javascript libraries -->
+    <!-- d3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- jQuery and Popper. They are required by Bootstrap, we discourage using jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Fullpage js -->
+    <script src="./node_modules/fullpage.js/vendors/easings.min.js"></script>
+    <script
+      type="text/javascript"
+      src="./node_modules/fullpage.js/dist/fullpage.js"
+    ></script>
+
+    <!-- My js file -->
+    <script src="./index.js"></script>
+  </body>
+</html>
