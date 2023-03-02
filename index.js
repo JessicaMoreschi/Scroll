@@ -162,6 +162,7 @@ function changePage() {
 
 function scrollFunction() {
     dayElapsed += 0.01
+
     d3.select('.daysCentraleContainer').select('h1').text(Math.floor(dayElapsed) + ' Days')
 }
 
@@ -175,7 +176,6 @@ function getH() {
         lineHeight = (regioneWait * serviceWait) * 1000
         if (lineHeight > 0 && lineHeight != undefined && lineHeight != NaN) {
             d3.select('#line').style('height', function(){
-                console.log(lineHeight+'px')
                 return lineHeight + 'px'})
                 if (runDays==false)
                 {setDays()
@@ -187,7 +187,7 @@ function getH() {
 }
 
 function setDays(){
-    console.log(lineHeight/1000)
+    d3.select('.days').style('gap', function(){return (lineHeight-((lineHeight/1000)*36))/(lineHeight/1000)+'px'})
     for (let day = 0; day < lineHeight/1000; day++) {
         d3.select('.days')
             .append('h5')
@@ -202,6 +202,6 @@ function setDays(){
                 }
             )
     }
-d3.select('.days').style('gap', function(){return (lineHeight-((lineHeight/1000)*36))/(lineHeight/100)})
+
 }
 
