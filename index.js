@@ -2,8 +2,8 @@
 var regione = 'Abruzzo';
 var service = 'Cardiological examination';
 let regioneWait, serviceWait, lineHeight
-let runDays=false
-let getPrivate=false
+let runDays = false
+let getPrivate = false
 
 let dayElapsed = 0
 let dday = 02
@@ -52,8 +52,9 @@ data.then(function (data) {
 
 function changePage() {
     d3.select('.header').select('img').attr('src', 'assets/icons/arrow.svg')
-    .on('click', function(){location.href='index.html'
-})
+        .on('click', function () {
+            location.href = 'index.html'
+        })
     d3.select('.header').select('h2').text('HealthCare system')
     d3.select('.mainContent').selectAll('div').remove()
     d3.select('.mainContent').select('.btnFixed').remove()
@@ -91,10 +92,12 @@ function changePage() {
         .attr('onscroll', 'scrollFunction()')
         .append('div')
         .attr('id', 'line')
-        d3.select('.scrollContainer')
+        .append('div')
+        .attr('id', 'lineRiga')
+    d3.select('.scrollContainer')
         .append('div')
         .attr('class', 'flex-column days')
-   
+
     //days centrale
     d3.select('.mainContent').append('div')
         .attr('class', 'flex-column daysCentraleContainer')
@@ -136,31 +139,33 @@ function changePage() {
     alertBox.append('div')
         .append('h5')
         .text('Reject')
-        .on('click', function () { d3.select('.overlay').style('display', 'none');
-        document.getElementsByClassName('scrollContainer')[0].scrollBy({
-            top: 500,
-            left: 0,
-            behavior: 'smooth'
-        });})
+        .on('click', function () {
+            d3.select('.overlay').style('display', 'none');
+            document.getElementsByClassName('scrollContainer')[0].scrollBy({
+                top: 500,
+                left: 0,
+                behavior: 'smooth'
+            });
+        })
     alertBox.select('div')
         .attr('class', 'flex-row footerAlert')
         .append('button')
-        .on('click', function () { 
-            d3.select('.overlay').style('display', 'none'); 
+        .on('click', function () {
+            d3.select('.overlay').style('display', 'none');
             document.getElementsByClassName('scrollContainer')[0].scrollTo({
                 top: lineHeight,
                 left: 0,
                 behavior: 'smooth'
             });
-            getPrivate=true
+            getPrivate = true
         })
         .attr('class', 'roundButton')
         .text('Accept')
 
-        //access stat
-        d3.select('.mainContent').append('div').append('button')
-        .on('click', function () { 
-            location.href='stat.html'
+    //access stat
+    d3.select('.mainContent').append('div').append('button')
+        .on('click', function () {
+            location.href = 'stat.html'
         })
         .attr('class', 'btnFixed roundButton')
         .attr('id', 'accessStatBtn')
@@ -173,18 +178,16 @@ function changePage() {
 
 
 function scrollFunction() {
-    dayElapsed = Math.floor((document.getElementsByClassName('scrollContainer')[0].scrollTop)/(lineHeight/1000)/14)
-    if(dayElapsed%9==0 && dayElapsed>4 && getPrivate==false ) { 
+    dayElapsed = Math.floor((document.getElementsByClassName('scrollContainer')[0].scrollTop) / 1000)
+    if (dayElapsed % 21 == 0 && dayElapsed > 20 && getPrivate == false) {
         d3.select('.overlay').style('display', 'block');
-       }
+    }
     d3.select('.daysCentraleContainer').select('h1').text(dayElapsed + ' Days')
-    console.log(lineHeight, document.getElementsByClassName('scrollContainer')[0].scrollTop)
+    if ((lineHeight - document.getElementsByClassName('scrollContainer')[0].scrollTop) < 1600) {
+        d3.select('#accessStatBtn').style('display', 'flex')
 
-if((lineHeight - document.getElementsByClassName('scrollContainer')[0].scrollTop)<1600)
-  {     console.log('ghjk')
-  d3.select('#accessStatBtn').style('display', 'flex')
-   
-}}
+    }
+}
 
 function getH() {
     let dataRegion = document.querySelector("#squareTag0 > h5").innerHTML
@@ -193,22 +196,30 @@ function getH() {
         if (data.regione == dataRegion) { regioneWait = data.regioneWait }
         if (data.service == dataService) { serviceWait = data.serviceWait }
 
+
+        
         lineHeight = (regioneWait * serviceWait) * 1000
         if (lineHeight > 0 && lineHeight != undefined && lineHeight != NaN) {
-            d3.select('#line').style('height', function(){
-                return lineHeight + 'px'})
-                if (runDays==false)
-                {setDays()
-                runDays=true}
+            d3.select('#line').style('height', function () {
+                return lineHeight + 'px'
+            })
+             d3.select('.scrollContainer').select('.days').style('height', function () {
+                return lineHeight + 'px'
+            })
+
+            if (runDays == false) {
+                setDays()
+                runDays = true
+            }
         }
     })
 
-   
+
 }
 
-function setDays(){
-    d3.select('.days').style('gap', function(){return (lineHeight-((lineHeight/1000)*36))/(lineHeight/1000)+'px'})
-    for (let day = 0; day < lineHeight/1000; day++) {
+function setDays() {
+    d3.select('.days').style('gap', function () { return (lineHeight - ((lineHeight / 1000) * 36)) / (lineHeight / 1000) + 'px' })
+    for (let day = 0; day < lineHeight / 1000; day++) {
         d3.select('.days')
             .append('h5')
             .style('color', 'var(--main-color)')
@@ -225,47 +236,50 @@ function setDays(){
 
 }
 
-function runAnimation(){
-    setTimeout(() => { 
-        document.getElementsByClassName('rect')[0].style.height= 48.4+'%' 
-        document.getElementsByClassName('rect')[1].style.height= 51.6+'%' 
+function runAnimation() {
+    setTimeout(() => {
+        document.getElementsByClassName('rect')[0].style.height = 48.4 + '%'
+        document.getElementsByClassName('rect')[1].style.height = 51.6 + '%'
     }, 1000);
-    setTimeout(() => { 
+    setTimeout(() => {
         d3.selectAll('.rect').selectAll('h4').style('display', 'block')
-        d3.selectAll('.infogHalf').selectAll('.flex-column').style('width', 70+'%')
+        d3.selectAll('.infogHalf').selectAll('.flex-column').style('width', 70 + '%')
     }, 2000);
-    setTimeout(() => { 
-        d3.selectAll('.infogHalf').selectAll('.flex-column').style('opacity', 100+'%')
+    setTimeout(() => {
+        d3.selectAll('.infogHalf').selectAll('.flex-column').style('opacity', 100 + '%')
     }, 3000);
 
 
     d3.select('.mainContent').append('div').append('button')
-    .attr('class', 'btnFixed roundButton')
-    .text('Next')
-    .on('click', function () { 
-        d3.select('.mainContent').select('h2').text('Average of wait time in days')
-        d3.selectAll('.rect').selectAll('h4').text('7g')
-        d3.selectAll('.rect').select('#stat2').text('32g')
-        document.getElementsByClassName('rect')[0].style.height= 17+'%' 
-        document.getElementsByClassName('rect')[1].style.height= 64+'%' 
-       
-        d3.select('.mainContent').select('.roundButton')
-        .on('click', function () { 
-            d3.select('.mainContent').select('.roundButton').text('Restart')
-            d3.select('.mainContent').select('h2').text('Average of wait time in days per region')
-            d3.select('#metàSup').style('display', 'none')
-            d3.selectAll('.rect').select('#stat2').text('30')
-            d3.select('#metàSott').style('height', 'auto')
-            d3.select('#metàSott').selectAll('div').remove()
-            d3.select('#metàSott').append('img')
-            .attr('src', 'assets/icons/stat.svg')
+        .attr('class', 'btnFixed roundButton')
+        .text('Next')
+        .on('click', function () {
+            d3.select('.mainContent').select('h2').text('The average of wait time in days is significantly different')
+            d3.selectAll('.rect').selectAll('h4').text('7g')
+            d3.selectAll('.rect').select('#stat2').text('32g')
+            // d3.select('#metàSup').selectAll('h3').text('Private facilities waiting time')
+            // d3.select('#metàSott').selectAll('h3').text('Public facilities waiting time')
+
+            document.getElementsByClassName('rect')[0].style.height = 17 + '%'
+            document.getElementsByClassName('rect')[1].style.height = 64 + '%'
 
             d3.select('.mainContent').select('.roundButton')
-            .on('click', function (){
-                location.href='index.html'
-            })
+                .on('click', function () {
+                    d3.select('.mainContent').select('.roundButton').text('Restart')
+                    d3.select('.mainContent').select('h2').text('Average of wait time in days per region')
+                    d3.select('#metàSup').style('display', 'none')
+                    d3.selectAll('.rect').select('#stat2').text('30')
+                    d3.select('#metàSott').style('height', 'auto')
+                    d3.select('#metàSott').selectAll('div').remove()
+                    d3.select('#metàSott').append('img')
+                        .attr('src', 'assets/icons/stat.svg')
+
+                    d3.select('.mainContent').select('.roundButton')
+                        .on('click', function () {
+                            location.href = 'index.html'
+                        })
+                })
         })
-    })
-   
+
 
 }

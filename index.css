@@ -173,7 +173,7 @@ body {
 
     background: var(--primary-color);
     border-radius: 100px;
-    border: none;
+    border: none !important; 
     color: white;
     flex: none;
 }
@@ -223,11 +223,22 @@ body {
 }
 
 #line {
-    height: 100%;
+    width: auto;
+    display: flex;
     position: absolute;
     left: 50%;
     border: none;
-    border-left: 3px dotted var(--main-color);
+    align-items: stretch;
+    /* border-left: 3px dotted var(--main-color); */
+}
+
+#lineRiga{
+    height: 100%;
+    /* border-left: 3px dotted var(--main-color); */
+    background-color: var(--main-color);
+    position: absolute;
+    left: 50%;
+    width: 2px;
 }
 
 .days {
@@ -377,7 +388,7 @@ body {
 }
 
 .infographContainer {
-    height: 80vh;
+    height: calc(100vh - 250px);
     width: 100%;
 }
 
@@ -404,3 +415,15 @@ body {
     width: 100%;
     text-align: center;
 ;}
+
+
+#metàSott img{
+    height: 60vh;
+    /* width: auto; */
+
+}
+
+#metàSup {
+   border-bottom: 3px dotted var(--main-color) ;
+
+}
