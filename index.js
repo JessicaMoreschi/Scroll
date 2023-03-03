@@ -227,7 +227,9 @@ function setDays() {
                 function () {
                     if (dday < 31) {
                         dday++
-                    } else { dday = 01; mmonthN++ }
+                    } else { dday = 01; 
+                        if(mmonthN<12)
+                        {mmonthN++} else{mmonthN=0} }
 
                     return (dday + ' ' + mmonth[mmonthN])
                 }
