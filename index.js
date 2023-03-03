@@ -51,6 +51,9 @@ data.then(function (data) {
 
 
 function changePage() {
+    d3.select('.header').select('img').attr('src', 'assets/icons/arrow.svg')
+    .on('click', function(){location.href='index.html'
+})
     d3.select('.header').select('h2').text('HealthCare system')
     d3.select('.mainContent').selectAll('div').remove()
     d3.select('.mainContent').select('.btnFixed').remove()
@@ -157,13 +160,7 @@ function changePage() {
         //access stat
         d3.select('.mainContent').append('div').append('button')
         .on('click', function () { 
-            d3.select('.overlay').style('display', 'none'); 
-            document.getElementsByClassName('scrollContainer')[0].scrollTo({
-                top: lineHeight,
-                left: 0,
-                behavior: 'smooth'
-            });
-            getPrivate=true
+            location.href='stat.html'
         })
         .attr('class', 'btnFixed roundButton')
         .attr('id', 'accessStatBtn')
@@ -228,3 +225,47 @@ function setDays(){
 
 }
 
+function runAnimation(){
+    setTimeout(() => { 
+        document.getElementsByClassName('rect')[0].style.height= 48.4+'%' 
+        document.getElementsByClassName('rect')[1].style.height= 51.6+'%' 
+    }, 1000);
+    setTimeout(() => { 
+        d3.selectAll('.rect').selectAll('h4').style('display', 'block')
+        d3.selectAll('.infogHalf').selectAll('.flex-column').style('width', 70+'%')
+    }, 2000);
+    setTimeout(() => { 
+        d3.selectAll('.infogHalf').selectAll('.flex-column').style('opacity', 100+'%')
+    }, 3000);
+
+
+    d3.select('.mainContent').append('div').append('button')
+    .attr('class', 'btnFixed roundButton')
+    .text('Next')
+    .on('click', function () { 
+        d3.select('.mainContent').select('h2').text('Average of wait time in days')
+        d3.selectAll('.rect').selectAll('h4').text('7g')
+        d3.selectAll('.rect').select('#stat2').text('32g')
+        document.getElementsByClassName('rect')[0].style.height= 17+'%' 
+        document.getElementsByClassName('rect')[1].style.height= 64+'%' 
+       
+        d3.select('.mainContent').select('.roundButton')
+        .on('click', function () { 
+            d3.select('.mainContent').select('.roundButton').text('Restart')
+            d3.select('.mainContent').select('h2').text('Average of wait time in days per region')
+            d3.select('#metàSup').style('display', 'none')
+            d3.selectAll('.rect').select('#stat2').text('30')
+            d3.select('#metàSott').style('height', 'auto')
+            d3.select('#metàSott').selectAll('div').remove()
+            d3.select('#metàSott').append('img')
+            .attr('src', 'assets/icons/stat.svg')
+
+            d3.select('.mainContent').select('.roundButton')
+            .on('click', function (){
+                location.href='index.html'
+            })
+        })
+    })
+   
+
+}

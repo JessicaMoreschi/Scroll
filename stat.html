@@ -27,56 +27,49 @@
     <!-- <link rel="icon" type="image/x-icon" href="./assets/imgs/Favicon.png" /> -->
   </head>
 
-  <body>
+  <body onload="runAnimation()">
     <div class="flex-row header">
-      <img src="assets/icons/user.svg" />
-      <h2>User Profilation</h2>
+     <a href="index.html"> <img src="assets/icons/arrow.svg" /></a>
+      <h2>Statistics</h2>
     </div>
 
     <div class="flex-column mainContent">
       <div class="flex-column">
-        <h3 style="padding-left: 16px">Geolocation</h3>
+        <h2 style="padding: 16px">
+          1004 facilities in 2022 provided healthcare in Italy
+        </h2>
 
-        <div class="dropdown">
-          <button class="btn input-visible dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" display: flex; align-items: center; justify-content: space-between;" onclick="openDropMenu(0)">
-            <div class="flex-row" style="gap: 8px; align-items: center">
-              <img src="assets/icons/user.svg" />
-              <h3 style="height: 14px" id="labelName0">Select</h3>
+        <div class="flex-column infographContainer">
+          <div id="metàSup" class="infogHalf">
+            <div
+              class="rect"
+              style="height: 2%; background-color: var(--primary-color);display: flex;align-items: flex-end;"
+            >
+              <h4 style=" color: white; display: none;">48,4%</h4>
             </div>
-            <h5 class="input-label">Region</h5>
-          </button>
-          <div class="dropdown-menu" id="dropdown-menu0" aria-labelledby="dropdownMenuButton" onclick="closeDropMenu(0)">
+            <div class="flex-column" style="width: 0%; padding: 16px; opacity: 0; transition: width 1000ms ease;
+">
+              <h3>Private facilities</h3>
+            </div>
+          </div>
+          <div id="metàSott" class="flex-row infogHalf" style="align-items: flex-start">
+            <div
+              class="rect"
+              style="
+                height: 2%;
+                background-color: var(--secondary-color-selection);
+              "
+            >
+              <h4 id="stat2" style="display: none">51,6%</h4>
+            </div>
+            <div class="flex-column" style="width: 0%; padding: 16px; opacity: 0; transition: width 1000ms ease;
+">
+              <h3>Public facilities</h3>
+            </div>
           </div>
         </div>
       </div>
-
-
-        <div class="flex-column">
-          <h3 style="padding-left: 16px">Category</h3>
-  
-          <div class="dropdown">
-            <button class="btn input-visible dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" display: flex; align-items: center; justify-content: space-between;" onclick="openDropMenu(1)">
-              <div class="flex-row" style="gap: 8px; align-items: center">
-                <img src="assets/icons/user.svg" />
-                <h3 style="height: 14px" id="labelName1">Select</h3>
-              </div>
-              <h5 class="input-label">Healthcare service</h5>
-            </button>
-            <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="dropdownMenuButton"  onclick="closeDropMenu(1)">
-            </div>
-          </div>
-        </div>
-
-      <button class="flex-column roundButton btnFixed" onclick="changePage()">Access</button>
-
-      <button class="flex-column" id="private">
-        <img src="assets/icons/building.svg" >
-      </button>
-
     </div>
-      
-
-    
 
     <!-- ******************* Utilities ******************* -->
     <!-- Javascript libraries -->

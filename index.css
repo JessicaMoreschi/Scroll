@@ -178,13 +178,13 @@ body {
     flex: none;
 }
 
-.btnFixed{
+.btnFixed {
     position: absolute;
     bottom: 24px;
     right: 16px;
 }
 
-#accessStatBtn{
+#accessStatBtn {
     right: 50%;
     transform: translateX(50%);
 }
@@ -267,7 +267,7 @@ body {
     height: auto;
 }
 
-.daysCentraleContainer p{
+.daysCentraleContainer p {
     max-width: 250px;
 }
 
@@ -315,7 +315,7 @@ body {
         width: 72px;
         height: 72px;
     }
-    
+
     25% {
         width: 56px;
         height: 56px;
@@ -341,19 +341,19 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.overlayContent *{
+.overlayContent * {
     text-align: center;
 
 }
 
-.footerAlert{
+.footerAlert {
     padding-left: fill;
     display: flex;
     gap: 16px;
     align-items: center;
 }
 
-.footerAlert h5{
+.footerAlert h5 {
     font-size: 12px;
     letter-spacing: 0.5px;
     line-height: 22px;
@@ -365,7 +365,7 @@ body {
 
 }
 
-.overlay{
+.overlay {
     display: none;
     position: absolute;
     top: 0;
@@ -375,3 +375,32 @@ body {
     background-color: rgba(255, 255, 255, 0.8);
     z-index: 5;
 }
+
+.infographContainer {
+    height: 80vh;
+    width: 100%;
+}
+
+.infogHalf {
+    display: flex;
+    height: 50%;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 16px;
+    padding-left: 16px;
+
+}
+
+.rect {
+    width: 50px;
+    border-radius: 10px;
+    transition: all 1000ms ease;
+}
+
+.rect h4 {
+    padding: 20px 0px;
+    width: 100%;
+    text-align: center;
+;}
